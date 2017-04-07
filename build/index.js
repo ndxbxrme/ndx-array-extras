@@ -1,15 +1,44 @@
 (function() {
   'use strict';
-  var e, error, module;
+  Array.prototype.remove = function(thing) {
+    return this.splice(this.indexOf(thing), 1);
+  };
 
-  module = null;
+  Array.prototype.moveUp = function(thing) {
+    var index;
+    index = this.indexOf(thing);
+    if (index > 0) {
+      this.splice(index, 1);
+      return this.splice(index - 1, null, thing);
+    }
+  };
 
-  try {
-    module = angular.module('ndx');
-  } catch (error) {
-    e = error;
-    module = angular.module('ndx-array-extras', []);
-  }
+  Array.prototype.moveDown = function(thing) {
+    var index;
+    index = this.indexOf(thing);
+    if (index > -1 && index < this.length - 1) {
+      this.splice(index, 1);
+      return this.splice(index + 1, null, thing);
+    }
+  };
+
+  Array.prototype.moveFirst = function(thing) {
+    var index;
+    index = this.indexOf(thing);
+    if (index > 0) {
+      this.splice(index, 1);
+      return this.splice(0, null, thing);
+    }
+  };
+
+  Array.prototype.moveLast = function(thing) {
+    var index;
+    index = this.indexOf(thing);
+    if (index > -1 && index < this.length - 1) {
+      this.splice(index, 1);
+      return this.splice(this.length, null, thing);
+    }
+  };
 
 }).call(this);
 
