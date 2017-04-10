@@ -1,6 +1,6 @@
 {
   "name": "ndx-array-extras",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "some useful array extras",
   "main": "build/index.js",
   "scripts": {
